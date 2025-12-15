@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca CEFET-RJ</title>
+  <link rel="stylesheet" href="../../css/estilo.css">
+  <script src="../js/gerenciar.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Biblioteca do CEFET-RJ Nova Friburgo</h1>
+
+    <section class="acoes">
+      <h2>Gerenciamento</h2>
+      <input type="text" id="busca" placeholder="Buscar por título, autor ou gênero">
+      <button id="consultarLivros">Consultar</button>
+      <button id="listarLivros">Listar Todos</button>
+    </section>
+
+    <section id="areaBusca">
+      <h3>Resultado da Busca</h3>
+      <div id="saidaBusca" class="resultado"></div>
+    </section>
+
+    <!-- Formulário de Alteração de Livro -->
+    <section id="areaEdicaoLivro">
+      <h3>Alterar Livro</h3>
+      <form id="formAlterarLivro" style="display:none; border:1px solid #ccc; padding:20px; margin-top:20px; background:#f9f9f9;">
+        <label for="editTitulo">Título</label>
+        <input type="text" id="editTitulo" name="titulo" required>
+        <label for="editAutor">Autor</label>
+        <input type="text" id="editAutor" name="autor" required>
+        <label for="editEditora">Editora</label>
+        <input type="text" id="editEditora" name="editora" required>
+        <label for="editAnoPublicacao">Ano de Publicação</label>
+        <input type="number" id="editAnoPublicacao" name="anoPublicacao" required>
+        <label for="editGenero">Gênero</label>
+        <input type="text" id="editGenero" name="genero" required>
+        <label for="editLocalizacao">Localização</label>
+        <input type="text" id="editLocalizacao" name="localizacao" required>
+        <label for="editIssn">ISSN</label>
+        <input type="text" id="editIssn" name="issn" required>
+        <label for="editDisponibilidade">Disponibilidade</label>
+        <input type="text" id="editDisponibilidade" name="disponibilidade" required>
+        <label for="editUrl">URL da Imagem</label>
+        <input type="text" id="editUrl" name="url" required>
+
+        <div style="margin-top:10px;">
+          <button type="submit">Salvar Alterações</button>
+          <button type="button" id="cancelarEdicaoLivro">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+  </div>
+
+<div class="backgroundPopup" style="display: none;">
+  <div class="popup">
+    <h3 id="detTitulo"></h3>
+    <img id="detImagem" src="" width="120">
+    <p><strong>Autor:</strong> <span id="detAutor"></span></p>
+    <p><strong>Editora:</strong> <span id="detEditora"></span></p>
+    <p><strong>Ano de Publicação:</strong> <span id="detAno"></span></p>
+    <p><strong>Gênero:</strong> <span id="detGenero"></span></p>
+    <p><strong>Localização:</strong> <span id="detLocalizacao"></span></p>
+    <p><strong>Disponibilidade:</strong> <span id="detDisponibilidade"></span></p>
+    <button onclick="fecharPopup()">Fechar</button>
+  </div>
+</div>
+
+
+
+
+</body>
+
+</html>
