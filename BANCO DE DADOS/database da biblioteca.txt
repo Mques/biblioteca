@@ -1,0 +1,20 @@
+create database biblioteca
+CREATE TABLE livro (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    editora VARCHAR(100) NOT NULL,
+    anoPublicacao YEAR NOT NULL,
+    genero VARCHAR(100) NOT NULL,
+    localizacao VARCHAR(100) NOT NULL,
+    issn VARCHAR(20) NOT NULL,
+    disponibilidade VARCHAR(3) NOT NULL,
+    url VARCHAR(1000)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE usuarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
