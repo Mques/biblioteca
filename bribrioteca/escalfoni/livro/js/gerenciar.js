@@ -1,9 +1,9 @@
 const btnConsultarLivros = document.querySelector("#consultarLivros");
 const btnListarTodosLivros = document.querySelector("#listarLivros");
 
-const URL_API = "http://localhost/bribrioteca/index.php?modulo=livro";  // Corrigido a URL
+const URL_API = "http://localhost/bribrioteca/index.php?modulo=livro";  
 
-// Função para resetar a div de resultados
+
 function resetarDiv(div) {
   while (div.firstChild) {
     div.removeChild(div.firstChild);
@@ -11,7 +11,7 @@ function resetarDiv(div) {
 }
 
 
-// Função para criar a tabela com os livros
+
 function criarTabela(livros, div) {
   const tabela = document.createElement("table");
 
@@ -48,7 +48,7 @@ function criarTabela(livros, div) {
 
   div.appendChild(tabela);
 
-  // Registrar os eventos de clique para os botões
+s
   document.querySelectorAll(".alterar").forEach((btn) => {
     btn.addEventListener("click", carregarDadosAlterarLivro);
   });
@@ -61,23 +61,22 @@ function criarTabela(livros, div) {
     btn.addEventListener("click", excluirLivro);
   });
 
-  // Registrar o evento de clique para alterar a disponibilidade
+
   document.querySelectorAll(".alterarDisponibilidade").forEach((btn) => {
     btn.addEventListener("click", alterarDisponibilidade);
   });
 }
 
-// Função para alterar a disponibilidade do livro
 async function alterarDisponibilidade() {
   const id = this.dataset.id;
   const disponibilidadeElement = document.querySelector(`#disponibilidade-${id}`);
   const disponibilidadeAtual = disponibilidadeElement.textContent;
 
-  // Alterna o valor entre 'Sim' e 'Não'
+
   const novaDisponibilidade = disponibilidadeAtual === "Sim" ? "Não" : "Sim";
   
   try {
-    // Envia a atualização para o servidor
+
     const response = await fetch(URL_API, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -87,8 +86,6 @@ async function alterarDisponibilidade() {
     if (!response.ok) {
       throw new Error("Erro ao alterar a disponibilidade do livro");
     }
-
-    // Atualiza a exibição na tabela
     disponibilidadeElement.textContent = novaDisponibilidade;
     alert("Disponibilidade alterada com sucesso!");
   } catch (error) {
@@ -97,7 +94,6 @@ async function alterarDisponibilidade() {
   }
 }
 
-// Função para listar todos os livros
 async function listarTodos() {
   try {
     const response = await fetch(URL_API);
@@ -117,7 +113,7 @@ async function listarTodos() {
   }
 }
 
-// Função para consultar os livros por filtro
+
 async function consultarLivros() {
   const filtro = document.querySelector("#busca").value.toLowerCase();
 
@@ -145,7 +141,6 @@ async function consultarLivros() {
   }
 }
 
-// Função para excluir livro
 async function excluirLivro() {
   const id = this.dataset.id;
 
@@ -170,7 +165,6 @@ async function excluirLivro() {
   }
 }
 
-// Função para carregar os dados do livro para edição
 function carregarDadosAlterarLivro() {
   const id = this.dataset.id;
 
@@ -211,7 +205,6 @@ function carregarDadosAlterarLivro() {
     });
 }
 
-// Função para alterar os dados do livro
 async function alterarLivro(id) {
   const titulo = document.querySelector("#editTitulo").value;
   const autor = document.querySelector("#editAutor").value;
@@ -255,20 +248,17 @@ async function alterarLivro(id) {
 }
 
 
-// Função para mostrar os detalhes do livro
+
 async function mostrarDetalhes() {
-  const id = this.dataset.id;  // Pega o ID do livro do botão "Detalhes"
+  const id = this.dataset.id;  
 
   try {
-    const response = await fetch(`http://localhost/bribrioteca/index.php?modulo=livro&id=${id}`); // Fetch para buscar os dados do livro
-
+    const response = await fetch(`http://localhost/bribrioteca/index.php?modulo=livro&id=${id}`); 
     if (!response.ok) {
       throw new Error("Erro ao carregar os dados do livro");
     }
 
     const livro = await response.json();
-
-    // Preenche os dados no popup
     document.querySelector("#detTitulo").textContent = livro[0].titulo;
     document.querySelector("#detAutor").textContent = livro[0].autor;
     document.querySelector("#detEditora").textContent = livro[0].editora;
@@ -278,34 +268,31 @@ async function mostrarDetalhes() {
     document.querySelector("#detDisponibilidade").textContent = livro[0].disponibilidade;
     document.querySelector("#detImagem").src = livro[0].url;
 
-    // Exibe o popup e o fundo
+
     document.querySelector(".backgroundPopup").style.display = "flex";
-    document.querySelector(".popup").style.display = "block";  // Mostra o popup
+    document.querySelector(".popup").style.display = "block";  
   } catch (e) {
     console.error("Erro ao carregar detalhes:", e);
     alert("Erro ao carregar detalhes do livro");
   }
 }
 
-// Função para fechar o popup
+
 function fecharPopup() {
   const background = document.querySelector(".backgroundPopup");
   const popup = document.querySelector(".popup");
 
-  background.style.display = "none";  // Esconde o fundo
-  popup.style.display = "none";  // Esconde o popup
+  background.style.display = "none";  
+  popup.style.display = "none"; 
 }
 
-
-// Função para fechar o popup de detalhes
 function fecharPopup() {
   const background = document.querySelector(".backgroundPopup");
   const popups = document.querySelectorAll(".popup");
 
-  background.style.display = "none"; // Esconde o fundo
-
+  background.style.display = "none"; 
   popups.forEach((popup) => {
-    popup.style.display = "none"; // Esconde todos os popups
+    popup.style.display = "none"; 
   });
 }
 

@@ -23,7 +23,7 @@ function Livro(
 }
 
 async function cadastrarExemplar(event) {
-  event.preventDefault(); // 🔥 ESSENCIAL se estiver em form
+  event.preventDefault(); 
 
   const url = "http://localhost/bribrioteca/?modulo=livro";
 

@@ -38,7 +38,7 @@ function remover($id) {
     if (!$usuario) {
         throw new Exception("Usuário não encontrado.");
     }
-    $usuario->remover($this->conn); // Remover o usuário
+    $usuario->remover($this->conn); 
 }
 
 }

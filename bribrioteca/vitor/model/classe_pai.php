@@ -28,7 +28,6 @@
     
     public function cadastrar($conn) {
         $this->encontraUltimoId();
-        //TODO: Cadastrar  no arquivo.
         $arquivo = fopen($this->nomeArquivo, "a");
         fwrite($arquivo, $this->montaLinhaDados()."\n");
         fclose($arquivo);

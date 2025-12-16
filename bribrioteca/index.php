@@ -51,13 +51,10 @@ switch ($metodo) {
 
     case "PUT":
         try {
-            // Verificar se a solicitação é para alterar a disponibilidade
             if (isset($dadosRecebidos->id) && isset($dadosRecebidos->disponibilidade)) {
-                // Se sim, chamamos o método de alterar a disponibilidade
                 $controller->alterarDisponibilidade($dadosRecebidos);
                 echo json_encode(["erro" => false, "mensagem" => "Disponibilidade alterada com sucesso"]);
             } else {
-                // Se não, é um PUT normal para editar o livro
                 $controller->alterar($dadosRecebidos);
                 echo json_encode(["erro" => false, "mensagem" => "Alterado com sucesso"]);
             }

@@ -32,7 +32,6 @@ class LivroController implements GenericController {
     }
 
     function alterar($dadosRecebidos) {
-        // Se chegou como objeto, usamos ->
         $livro = Livro::pegaPorId($dadosRecebidos->id, $this->conn);
         if (!$livro) {
             return ["erro" => true, "mensagem" => "Livro não encontrado"];
